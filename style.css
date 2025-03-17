@@ -58,6 +58,10 @@ button{
     border-radius: 2.5rem;
    
 }
+button:hover {
+    background: #e04e3f;
+    transition: 0.3s;
+}
 
 ul li{
     list-style: none;
@@ -80,4 +84,13 @@ ul li::before{
     left: 0.5rem;
     transform: translateY(-50%);
 }
-
+ul li:hover {
+    background: #f1f1f1;
+}
+ul li.checked {
+    text-decoration: line-through;
+    color: gray;
+}
+ul li.checked::before {
+    background-image: url('assets/checked.svg');
+}
