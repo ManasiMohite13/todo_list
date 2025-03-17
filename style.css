@@ -85,11 +85,16 @@ ul li::before{
     transform: translateY(-50%);
 }
 ul li:hover {
-    background: #f1f1f1;
+    background: #e0e0e0;
+    transition: background 0.3s ease-in-out;
 }
 ul li.checked {
     text-decoration: line-through;
     color: gray;
+}
+/* Checked task hover effect */
+ul li.checked:hover {
+    background: #d1ffd1;
 }
 ul li.checked::before {
     background-image: url('assets/checked.svg');
