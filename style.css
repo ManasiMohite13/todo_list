@@ -60,9 +60,12 @@ button{
 }
 button:hover {
     background: #e04e3f;
-    transition: 0.3s;
+    transform: scale(1.05);
 }
-
+/* Button click effect */
+button:active {
+    transform: scale(0.95);
+}
 ul li{
     list-style: none;
     font-size: 1.1rem;
