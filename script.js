@@ -1,4 +1,5 @@
 const inputBox = document.getElementById("input-box");
+const priorityBox = document.getElementById("priority-box");
 const listContainer = document.getElementById("list-container");
 
 function addTask() {
@@ -8,7 +9,12 @@ function addTask() {
     else {
         let li = document.createElement("li");
         li.innerHTML = inputBox.value;
+          // Get selected priority and add class
+          let priority = priorityBox.value;
+          li.classList.add(priority);
+          
         listContainer.appendChild(li);
+
         let span = document.createElement("span");
         span.innerHTML = "\u00d7";  // Unicode for '×' (delete icon)
         li.appendChild(span);

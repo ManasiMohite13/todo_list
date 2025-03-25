@@ -1,27 +1,31 @@
+/* Global Styles */
 * {
     margin: 0;
     padding: 0;
-    font-family: 'Poppins', sans-serif;
     box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
 }
 
+/* Background Container */
 .container {
     width: 100%;
     min-height: 100vh;
     background: linear-gradient(135deg, #153677, #4e085f);
     padding: 1rem;
-
 }
 
+/* To-Do App Box */
 .todo-app {
     width: 100%;
     max-width: 540px;
     background: #fff;
     margin: 12rem auto 2rem;
-    padding: 2rem 4rem 2rem;
+    padding: 2rem 4rem;
     border-radius: 1rem;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
 }
 
+/* Title */
 .todo-app h2 {
     color: #002765;
     display: flex;
@@ -29,21 +33,24 @@
     margin-bottom: 2rem;
 }
 
+/* Icon in Title */
 .todo-app img {
     width: 2rem;
     margin-left: 1rem;
 }
 
+/* Input and Button Row */
 .row {
     display: flex;
     align-items: center;
     justify-content: space-between;
     background: #edeef0;
     border-radius: 2rem;
-    padding: 0.1rem;
-    margin-bottom: 4rem;
+    padding: 0.5rem;
+    margin-bottom: 2rem;
 }
 
+/* Input Field */
 input {
     flex: 1;
     border: none;
@@ -53,87 +60,93 @@ input {
     font-weight: 400;
 }
 
+/* Button */
 button {
     border: none;
     outline: none;
-    padding: 1rem 3rem;
+    padding: 1rem 2rem;
     background: #ff5945;
     color: #fff;
     font-size: 1rem;
     cursor: pointer;
     border-radius: 2.5rem;
-
+    transition: all 0.3s ease;
 }
 
+/* Button Hover Effect */
 button:hover {
     background: #e04e3f;
     transform: scale(1.05);
 }
 
-/* Button click effect */
+/* Button Click Effect */
 button:active {
     transform: scale(0.95);
 }
 
+/* Priority Dropdown */
+select {
+    padding: 0.5rem;
+    border-radius: 5px;
+    outline: none;
+    border: 1px solid #ccc;
+    margin-right: 0.5rem;
+}
+
+/* List Items */
 ul li {
     list-style: none;
-    font-size: 1.1rem;
-    padding: 0.8rem 0.5rem 0.6rem 3rem;
+    padding: 0.8rem 0.5rem 0.6rem 1.5rem;
     user-select: none;
     cursor: pointer;
     position: relative;
-}
-
-ul li::before {
-    content: "";
-    position: absolute;
-    height: 1.5rem;
-    width: 1.5rem;
-    border-radius: 50%;
-    background-image: url('assets/unchecked.svg');
-    background-size: cover;
-    background-position: center;
-    top: 50%;
-    left: 0.5rem;
-    transform: translateY(-50%);
-}
-
-ul li:hover {
-    background: #e0e0e0;
+    margin-bottom: 0.5rem;
+    background: #f9f9f9;
+    border-radius: 1rem;
     transition: background 0.3s ease-in-out;
 }
 
+/* Hover Effect on List Items */
+ul li:hover {
+    background: #e0e0e0;
+}
+
+/* Different Priority Colors */
+.low { color: green; }
+.medium { color: orange; }
+.high { color: red; }
+
+/* Checked Task */
 ul li.checked {
     text-decoration: line-through;
     color: gray;
 }
 
-/* Checked task hover effect */
+/* Checked Hover Effect */
 ul li.checked:hover {
     background: #d1ffd1;
 }
 
-ul li.checked::before {
-    background-image: url('assets/checked.svg');
-}
-
+/* Delete Button (Cross Icon) */
 ul li span {
     position: absolute;
-    right: 0;
-    top: 20%;
-    width: 1.5rem;
-    height: 1.5rem;
+    right: 1rem;
+    top: 50%;
+    transform: translateY(-50%);
     font-size: 1.5rem;
     color: #555;
-    line-height: 1.3rem;
-    text-align: center;
+    cursor: pointer;
+    padding: 0.2rem 0.4rem;
     border-radius: 50%;
+    transition: background 0.2s ease;
 }
 
+/* Delete Button Hover */
 ul li span:hover {
     background: #edeef0;
 }
 
+/* Responsive */
 @media (max-width: 980px) {
     .todo-app {
         padding: 1.5rem;
