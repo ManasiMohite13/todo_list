@@ -1,46 +1,67 @@
 const inputBox = document.getElementById("input-box");
-const priorityBox = document.getElementById("priority-box");
 const listContainer = document.getElementById("list-container");
+const dueDateInput = document.getElementById("due-date");
+const priorityLevel = document.getElementById("priority-level");
 
+// Add Task Function
 function addTask() {
-    if (inputBox.value == '') {
-        alert("You must write something!");
-    }
-    else {
-        let li = document.createElement("li");
-        li.innerHTML = inputBox.value;
-          // Get selected priority and add class
-          let priority = priorityBox.value;
-          li.classList.add(priority);
-          
-        listContainer.appendChild(li);
+    const task = inputBox.value.trim();
+    const dueDate = dueDateInput.value;
+    const priority = priorityLevel.value;
 
-        let span = document.createElement("span");
-        span.innerHTML = "\u00d7";  // Unicode for '×' (delete icon)
-        li.appendChild(span);
+    if (task === "") {
+        alert("⚠️ Please enter a task!");
+        return;
     }
+
+    if (dueDate === "") {
+        alert("⚠️ Please select a due date!");
+        return;
+    }
+
+    // Create Task List Item
+    const li = document.createElement("li");
+    li.classList.add(priority); // Add priority class
+    li.innerHTML = `
+        ${task} 
+        <div class="due-date">Due: ${dueDate}</div>
+    `;
+
+    // Create Delete Button
+    const span = document.createElement("span");
+    span.innerHTML = "\u00d7"; // '×' symbol
+    li.appendChild(span);
+
+    // Add to List
+    listContainer.appendChild(li);
+
+    // Reset Inputs
     inputBox.value = "";
-    saveData(); // Save tasks after adding
+    dueDateInput.value = "";
+    priorityLevel.value = "low";
+
+    saveData();
 }
 
+// Toggle Checked or Delete
 listContainer.addEventListener("click", function (e) {
     if (e.target.tagName === "LI") {
         e.target.classList.toggle("checked");
-        saveData(); // Save tasks after checking/unchecking
-    }
-    else if (e.target.tagName === "SPAN") {
+        saveData();
+    } else if (e.target.tagName === "SPAN") {
         e.target.parentElement.remove();
-        saveData();// Save tasks after deleting
+        saveData();
     }
-}, false);
+});
 
-// Function to save tasks in localStorage
-function saveData(){
-    localStorage.setItem("data", listContainer.innerHTML);
+// Save to Local Storage
+function saveData() {
+    localStorage.setItem("tasks", listContainer.innerHTML);
 }
-// Function to load tasks from localStorage
-function showTask(){
-    listContainer.innerHTML = localStorage.getItem("data");
+
+// Show Saved Tasks on Load
+function showTasks() {
+    listContainer.innerHTML = localStorage.getItem("tasks") || "";
 }
-//Loads the task when the page loads
-showTask();
+
+showTasks();
